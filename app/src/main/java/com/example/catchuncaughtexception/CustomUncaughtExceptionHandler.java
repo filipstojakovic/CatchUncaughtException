@@ -56,4 +56,9 @@ public class CustomUncaughtExceptionHandler implements Thread.UncaughtExceptionH
 
         defaultUEH.uncaughtException(thread, ex);
     }
+
+    public void deleteFile()
+    {
+        context.deleteFile(STACKTRACE_FILE_NAME);
+    }
 }

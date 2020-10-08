@@ -16,8 +16,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Thread.setDefaultUncaughtExceptionHandler(new CustomUncaughtExceptionHandler(this));
+        CustomUncaughtExceptionHandler handler = new CustomUncaughtExceptionHandler(this);
+        Thread.setDefaultUncaughtExceptionHandler(handler);
         new ReportCrash(this).emailCrash();
+        handler.deleteFile();
         
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener()
         {

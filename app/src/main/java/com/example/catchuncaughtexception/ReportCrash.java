@@ -44,11 +44,14 @@ public class ReportCrash
 
             context.startActivity(Intent.createChooser(sendIntent, CRASH_REPORT_TITLE));
 
+
         } catch (IOException ex)
         {
             ex.printStackTrace();
         }
     }
+
+
 
     // if file crash.stacktrace exists ask user to send email of the crash
     // if file scrash.stacktrace does NOT exist, then FileNotFoundException will be thrown and rest of the method's code wont be executed
@@ -63,8 +66,10 @@ public class ReportCrash
         {
             stringBuilder.append(line).append("\n");
         }
-
         reader.close();
+
+        // u can delete file after reading
+        // context.deleteFile(CustomUncaughtExceptionHandler.STACKTRACE_FILE_NAME);
         return stringBuilder.toString();
     }
 }
